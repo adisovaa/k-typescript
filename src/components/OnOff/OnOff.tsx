@@ -13,7 +13,7 @@ export const OnOff = (props: PropsType) => {
         border: '1px solid black',
         display: 'inline-block',
         padding: '5px',
-        backgroundColor: props.on ? 'red' : 'white'
+        backgroundColor: props.on ? 'green' : 'white'
     }
     const offStyle = {
         width: '50px',
@@ -22,7 +22,7 @@ export const OnOff = (props: PropsType) => {
         display: 'inline-block',
         marginLeft: '5px',
         padding: '5px',
-        backgroundColor: !props.on ? 'green' : 'white'
+        backgroundColor: !props.on ? 'red' : 'white'
     }
     const indicatorStyle = {
         width: '20px',
@@ -31,7 +31,7 @@ export const OnOff = (props: PropsType) => {
         border: '1px solid black',
         display: 'inline-block',
         marginLeft: '20px',
-        backgroundColor: props.on ? 'red' : 'green'
+        backgroundColor: props.on ? 'green' : 'red'
     }
 
     return (

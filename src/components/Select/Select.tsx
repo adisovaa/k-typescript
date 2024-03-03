@@ -24,13 +24,25 @@ export function Select(props: PropsType) {
         toggleItems()
     }
     const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
-        for (let i = 0; i < props.items.length; i++) {
-            if (props.items[i].value === hoveredElementValue) {
-                if (props.items[i + 1]) {
-                    props.onChange(props.items[i + 1].value)
-                    break
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            for (let i = 0; i < props.items.length; i++) {
+                if (props.items[i].value === hoveredElementValue) {
+                    const pretendedElement = e.key === 'ArrowDown'
+                        ? props.items[i + 1]
+                        : props.items[i - 1];
+
+                    if (pretendedElement) {
+                        props.onChange(pretendedElement.value)
+                        return
+                    }
                 }
             }
+            if (!selectedItem) {
+                props.onChange(props.items[0].value)
+            }
+        }
+        if (e.key === 'Enter' || e.key === 'Escape') {
+            setActive(false)
         }
     }
 

@@ -30,4 +30,3 @@ export const ModeChanging = () => {
                       onClick={(id) => {console.log(`user with id ${id} should be happy`)}}
     />
 }
-

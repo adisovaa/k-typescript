@@ -6,13 +6,18 @@ import {OnOff} from "./components/OnOff/OnOff";
 import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
+import * as timers from "timers";
 
 function App() {
     console.log('app')
-
     const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
     const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
     const [switchOn, setSwitchOn] = useState<boolean>(false)
+
+    const Items = [{
+        title: 'hey',
+        value: 0
+    }]
 
     return (
         <div className="App">
@@ -24,7 +29,10 @@ function App() {
             <UncontrolledRating/>
 
             <UncontrolledAccordion titleValue={'Menu'}/>
-            <Accordion titleValue={'Users'} collapsed={accordionCollapsed}
+            <Accordion titleValue={'Users'}
+                       collapsed={accordionCollapsed}
+                       items={[]}
+                       onClick={() => {}}
                        onChange={() => setAccordionCollapsed(!accordionCollapsed)}/>
 
             {/*Article 2*/}
@@ -51,5 +59,3 @@ function PageTitle(props: PageTitleType) {
 }
 
 export default App;
-
-

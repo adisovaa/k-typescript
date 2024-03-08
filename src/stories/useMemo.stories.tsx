@@ -37,3 +37,44 @@ export const Example1 = () => {
         <div>Resul for b: {resultB}</div>
     </>
 }
+
+
+const UserSecret = (props: { users: Array<string> }) => {
+    console.log('User Secret')
+    return <div> {
+        props.users.map((u, i) => <div key={i}>{u}</div>)
+    }</div>
+}
+
+
+const Users = React.memo(UserSecret)
+export const UsersWithMemo = () => {
+    console.log('UsersWithMemo')
+
+    const [counter, setCounter] = useState(0)
+    const [users, setUsers] = useState(['John', 'Ann', 'Lorem', 'Kate'])
+
+    // const newArray = useMemo<any>(() => {
+    //     users.filter(u => u.toLowerCase().indexOf('a') > -1);
+    // }, [])
+
+
+    const newArray = useMemo<any>(() => {
+        const newArray = users.filter(u => u.toLowerCase().indexOf('a') > -1);
+        return newArray
+    }, [users])
+
+    const addUser = () => {
+        const newUser = [...users, 'Charley ' + new Date().getTime()]
+        setUsers(newUser)
+    }
+
+
+    return <>
+        <button onClick={() => setCounter(counter + 1)}>+</button>
+        <button onClick={() => addUser()}>add user</button>
+        {counter}
+        <Users users={newArray}/>
+    </>
+}
+

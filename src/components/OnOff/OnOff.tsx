@@ -5,7 +5,7 @@ type PropsType = {
     onChange: (on: boolean) => void
 }
 
-export const OnOff = (props: PropsType) => {
+export const OnOffWithMemo = (props: PropsType) => {
 
     const onStyle = {
         width: '50px',
@@ -49,3 +49,4 @@ export const OnOff = (props: PropsType) => {
     )
 }
 
+export const OnOff = React.memo(OnOffWithMemo)

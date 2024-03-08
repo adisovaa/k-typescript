@@ -38,4 +38,3 @@ test('throw error case in reducer', () => {
     }).toThrowError()
 })
 
-

@@ -13,7 +13,7 @@ type AccordionPropsType = {
     onClick: (value: any) => void
 }
 
-export function Accordion(props: AccordionPropsType) {
+export function AccordionWithMemo(props: AccordionPropsType) {
     console.log('Accordion')
     return <div>
         <AccordionTitle title={props.titleValue} onChange={props.onChange}/>
@@ -21,24 +21,28 @@ export function Accordion(props: AccordionPropsType) {
     </div>
 }
 
+export const Accordion = React.memo(AccordionWithMemo)
+
 type AccordionTitlePropsType = {
     title: string
     onChange: () => void
 }
 
-export function AccordionTitle(props: AccordionTitlePropsType) {
+export function AccordionTitleWithMemo(props: AccordionTitlePropsType) {
     console.log('AccordionTitle')
     return <>
         <h3 onClick={() => props.onChange()}>{props.title}</h3>
     </>
 }
 
+export const AccordionTitle = React.memo(AccordionTitleWithMemo)
+
 type AccordionBody = {
     items: ItemType[]
     onClick: (value: any) => void
 }
 
-export function AccordionBody(props: AccordionBody) {
+export function AccordionBodyWithMemo(props: AccordionBody) {
     console.log('AccordionBody')
     return <ul> {
         props.items.map((i, index) => {
@@ -50,3 +54,4 @@ export function AccordionBody(props: AccordionBody) {
     </ul>
 }
 
+export const AccordionBody = React.memo(AccordionBodyWithMemo)

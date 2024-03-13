@@ -25,7 +25,6 @@ export const Clock: React.FC<PropsType> = (props) => {
     // const getMinutesString = get2DigitsString(date.getMinutes())
     // const getSecondsString = get2DigitsString(date.getSeconds())
 
-
     let view;
     switch (props.mode) {
         case 'analog':

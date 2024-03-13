@@ -82,3 +82,80 @@ export const SetTimeoutExample = () => {
         </div>
     </>
 }
+
+
+export const ResetEffectExample = () => {
+    const [counter, setCounter] = useState(1)
+
+    console.log('SetTimeoutExample')
+
+    useEffect(() => {
+        console.log('Effect occurred' + counter)
+
+        return () => {
+            console.log('Reset effect' + counter)
+        }
+
+    }, [])
+
+    const increase = () => {
+        setCounter(counter + 1)
+    }
+
+    return (
+        <div>
+            Hello, counter: {counter}
+            <button onClick={increase}>+</button>
+        </div>
+    )
+}
+
+
+export const KeyTrackerExample = () => {
+    const [text, setText] = useState('')
+
+    console.log('KeyTrackerExample')
+
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => {
+            console.log(e.code)
+            setText((text) => text + e.code)
+        }
+        window.addEventListener('keypress', handler)
+
+        return () => {
+            window.removeEventListener('keypress', handler)
+        }
+    }, [text])
+
+    return (
+        <div>
+            Typed text: {text}
+        </div>
+    )
+}
+
+
+export const SetTimeOutExample2 = () => {
+    const [text, setText] = useState('')
+
+    console.log('component rendered with ' + {text})
+
+    useEffect(() => {
+        const textID = setTimeout(() => {
+            console.log('timeout expired')
+            setText('3 sec passed')
+        }, 3000)
+
+        return () => {
+            clearTimeout(textID)
+        }
+    }, [text])
+
+
+    return (
+        <div>
+            Text: {text}
+        </div>
+    )
+}

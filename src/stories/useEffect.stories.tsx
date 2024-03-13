@@ -45,6 +45,7 @@ export const SetTimeoutExample = () => {
     const [fake, setFake] = useState(1)
     const [counter, setCounter] = useState(1)
     const [tick, setTick] = useState(1)
+    const [clock, setClock] = useState('')
 
     console.log('SetTimeoutExample')
 
@@ -55,17 +56,18 @@ export const SetTimeoutExample = () => {
         }, 1000)
     }, [counter])
 
-    // useEffect(() => {
-    //     setInterval(() => {
-    //         setTick((state) => state + 1)
-    //     }, 1000)
-    // }, [])
+    useEffect(() => {
+        setInterval(() => {
+            setTick(tick => tick + 1)
+        }, 1000)
+    }, [])
 
     useEffect(() => {
         setInterval(() => {
-            setTick((tick) => tick + 1)
+            setClock(new Date().toLocaleTimeString('en-US'))
         }, 1000)
     }, [])
+
 
     return <>
         <div>Hello {counter} {fake}</div>
@@ -75,5 +77,8 @@ export const SetTimeoutExample = () => {
         <br/>
         <br/>
         <div>Tick -- {tick}</div>
+        <div>
+            <h1>Current Time: {clock}</h1>
+        </div>
     </>
 }
